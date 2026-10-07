@@ -13,7 +13,7 @@ conda activate DCRA_env
 ## Usage
 
 ```
-python main.py --auto-detect-cells --threads=32 --output-prefix dcra_test/test_ test_data/SC_ONT_1M.fastq.gz
+python main.py --auto-detect-cells --threads=32 --output-prefix dcra_test/test_ test_data/SC_ONT_100k.fastq.gz
 ```
 
 ## Workflow
