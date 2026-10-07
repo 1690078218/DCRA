@@ -1,30 +1,27 @@
-创建环境：
+# DCRA
 
+DCRA (derivative change-rate analysis) identifies cell barcodes and demultiplexes 10X single-cell long-read RNA-seq data. It takes FASTQ files as input and outputs a barcode whitelist and a FASTQ file with demultiplexed reads. The count threshold is determined automatically from the shape of the barcode rank curve, without requiring a user-specified expected cell number.
+
+## Environment setup
+
+```
 cd DCRA
-
 mamba env create -f env.yml
+conda activate DCRA_env
+```
 
-conda activate DCRA\_env
+## Usage
 
+```
+python main.py --auto-detect-cells --threads=32 --output-prefix dcra_test/test_ data/1M.fastq
+```
 
+## Workflow
 
-命令：
+1. Extract putative barcodes from the reads
+2. Generate the barcode whitelist using derivative change-rate analysis (DCRA)
+3. Demultiplex the reads using the whitelist to produce CB/UB-tagged FASTQ files
 
-python main.py --auto-detect-cells --threads=32 --output-prefix dcra\_test/test\_ data/1M.fastq
+## License and acknowledgements
 
-
-
-主要流程：
-
-1、从reads中获取候选Barcodes
-
-2、根据导数变化率分析（DCRA）得到Barcodes白名单
-
-3、根据白名单解复用得到带CB、UB标签的fastq
-
-
-
-许可证与致谢：
-
-DCRA 的条形码提取与解复用模块改编自 BLAZE（https://github.com/shimlab/BLAZE），在此表示感谢。本项目采用 GPL-3.0 许可证，详见 LICENSE 文件。
-
+The barcode extraction and demultiplexing modules of DCRA are adapted from BLAZE (https://github.com/shimlab/BLAZE), which is gratefully acknowledged. This project is licensed under GPL-3.0; see the LICENSE file.
